@@ -20,11 +20,15 @@ def read_R():
             if chan > 90:
                 chan -= 90
                 servo_write(servo,chan)
+                unlockChime()
                 printmessage('Unlocked')
+                lcd.clear()
             else:
                 chan += 90
                 servo_write(servo,chan)
+                lockChime()
                 printmessage('Locked')
+                lcd.clear()
             utime.sleep_ms(1000)
         else:
             utime.sleep_ms(10)
@@ -402,6 +406,7 @@ def stop():
 
 #RUN
 read_R()
+
 
 
 
